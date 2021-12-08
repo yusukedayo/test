@@ -1,0 +1,21 @@
+.user-container {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom:solid;
+    border-color:black;
+    border-width:2px;
+}
+
+.nickname{
+    padding-top: 40px;
+    font-size: 30px;
+    
+}
+
+.right-container{
+    padding-top: 40px;
+    font-size: 30px;
+}

@@ -1,0 +1,73 @@
+a {
+  text-decoration:none; 
+}
+
+.index{
+  padding : 20px;
+}
+
+// 投稿全体
+.question-container {
+    border-top: solid #00acee;
+    width: 960px;
+    height: 170px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.image{
+  width: 150px;
+  height: 150px;
+}
+
+// ユーザー名の位置
+.image p{
+  margin: 0px 0px 0px 50px;
+}
+
+.question-title{
+  padding-top: 80px;
+  width: 800px;
+  height: 170px;
+  text-align: center;
+}
+
+.page{
+  text-align: center;
+}
+
+.search{
+  text-align: center;
+}
+
+.solved{
+  padding-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table th, table td {
+  padding: 8px;
+  border: solid 2px black;
+}
+
+
+
+input[type="search"] {
+  width: 300px;
+  height: 34px;
+}
+
+input[type="submit"] {
+  position: relative;
+	top: 2px;
+  width: 80px;
+  height: 34px;
+}
+

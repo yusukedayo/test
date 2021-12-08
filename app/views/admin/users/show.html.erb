@@ -1,0 +1,11 @@
+<h1>Admin::Users#show</h1>
+<%= @user.id %>
+<%= image_tag @user.image if @user.image.attached? %>
+<%= @user.nickname %>
+<%= @user.email %>
+<%= @user.admin? ? "あり" : "なし" %>
+<%= @user.created_at %>
+<%= @user.updated_at %>
+<%= link_to "編集", edit_admin_user_path, class: "btn btn-primary mr-3" %>
+<%= link_to "削除", [:admin, @user], method: :delete, class: "btn btn-primary mr-3" %>
+

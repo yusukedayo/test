@@ -1,0 +1,18 @@
+<div class = "session-new">
+<%= form_with  url: login_url, scope: :session, local: true do |f| %>
+  <div class = "mail">
+  <%= f.label :email, "メールアドレス"  %><br>
+  <%= f.text_field :email, class: "form-control", id: "session_email"  %>
+  </div>
+  <div class = "password">
+  <%= f.label :password, "パスワード"  %> <br>
+  <%= f.password_field :password, class: "form-control", id: "session_password" %>
+  </div>
+<%= f.submit "ログインする", class: "btn btn-primary" %>
+<% end %>
+</div>
+
+
+
+
+

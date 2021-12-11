@@ -25,7 +25,7 @@
           </div>
           <div class="question-title">
             <%= link_to question.title, question %>
-            <% if  question.solved == true%>
+            <% if  question.solved %>
             <%= ":解決済み" %>
             <% else %>
             <%= ":未解決"%>

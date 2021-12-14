@@ -31,10 +31,12 @@ class QuestionsController < ApplicationController
   
   def update
     question = Question.find(params[:id])
-    question.update!(question_params)
-    redirect_to questions_url
+    if question.update(question_params)
+      redirect_to questions_url
+    else
+      render :edit
+    end
   end
-
 
   def destroy
     question = Question.find(params[:id])
@@ -45,15 +47,17 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user_id = current_user.id
-    @question.save!
-    
-    QuestionMailer.creation_email(@question).deliver_now
-    redirect_to questions_url
+    if @question.save
+      QuestionMailer.creation_email(@question).deliver_now
+      redirect_to questions_urlelse
+    else
+      flash.now[:danger] = '失敗しました'
+      render :new
+    end
   end
 
   private
   def question_params
-    params.require(:question).permit(:title, :body, :solved)
+    params.require(:question).permit(:title, :body, :solved, :image)
   end
 end
-

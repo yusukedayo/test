@@ -19,8 +19,8 @@
   <% @questions.each do |question| %>
     <div class="question-container">
         <div class="image">
-        <%= image_tag question.user.image, class: "rounded-circle", size: "120x120" if question.user.image.attached? %>
-        <p><%= question.user.nickname %></p>
+            <%= image_tag question.user.image, class: "rounded-circle", size: "120x120" if question.user.image.attached? %>
+            <p><%= question.user.nickname %></p>
         </div>
         <div class="question-title">
         <%= link_to question.title, question %>

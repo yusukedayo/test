@@ -5,11 +5,10 @@ class AnswersController < ApplicationController
         answer.user_id = current_user.id
         if answer.save
             flash[:success] = "コメントしました"
-            redirect_back(fallback_location: root_path)
         else
-            flash[:success] = "コメントできませんでした"
-            redirect_back(fallback_location: root_path)
+            flash[:success] = "コメントできませんでした" 
         end
+        redirect_back(fallback_location: root_path)
     end
 
     private
@@ -17,7 +16,4 @@ class AnswersController < ApplicationController
     def answer_params
         params.require(:answer).permit(:content)
     end
-
-
-
 end

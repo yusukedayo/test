@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "questions#index"
+
   namespace :questions do
     get 'solved/index'
   end
@@ -8,15 +10,19 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  root to: "questions#index"
   resources :questions do
+    collection do
+      get :solved
+      get :unsolved
+    end
+
+    member do
+      post :solve
+    end
     resources :answers, only: [:create]
   end
-  get "/question/solved", to: "questions#solved"
-  get "/question/unsolved", to: "questions#unsolved"
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

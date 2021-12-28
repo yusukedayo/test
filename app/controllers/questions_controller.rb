@@ -17,8 +17,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers
-    @answer = Answer.new
+    @answer = @question.answers.build
   end
 
   def new
@@ -26,11 +25,11 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
   end
   
   def update
-    question = Question.find(params[:id])
+    question = current_user.questions.find(params[:id])
     if question.update(question_params)
       redirect_to questions_url
     else
@@ -39,7 +38,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    question = Question.find(params[:id])
+    question = current_user.questions.find(params[:id])
     question.destroy
     redirect_to questions_path
   end
@@ -49,7 +48,7 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id
     if @question.save
       QuestionMailer.creation_email(@question).deliver_now
-      redirect_to questions_urlelse
+      redirect_to questions_url
     else
       flash.now[:danger] = '失敗しました'
       render :new

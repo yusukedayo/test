@@ -1,0 +1,23 @@
+<div class = "session-new">
+  <%= form_with model: [:admin, user] do |f| %>
+    <%= f.label :nickname, "ニックネーム"  %><br>
+    <%= f.text_field :nickname %><br>
+  
+    <%= f.label :email, "メールアドレス"  %><br>
+    <%= f.text_field :email %><br>
+  
+    <%= f.label :image, "プロフィール画像"  %><br>
+    <%= f.file_field :image, class: 'form-control'%><br>
+  
+    <%= f.label :admin  %><br>
+    <%= f.check_box :admin %><br>
+  
+    <%= f.label :password, "パスワード"  %><br>
+    <%= f.password_field :password %><br>
+  
+    <%= f.label :password_confirmation, "パスワード(確認)"  %><br>
+    <%= f.password_field :password_confirmation %><br>
+  
+    <%= f.submit "登録", class: "btn btn-primary" %>
+  <% end %>
+</div>

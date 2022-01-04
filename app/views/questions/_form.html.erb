@@ -1,0 +1,18 @@
+<div class="post-container">
+  <p class="title">投稿フォーム</p>
+  <%= form_with model: question do |f| %>
+    <%= f.label :solved, "解決済みにする"  %>
+    <%= f.check_box :solved, id:"solved_questions" %>
+    <br>
+    <br>
+    <%= f.label :title, "質問タイトル"  %>
+    <br>
+    <%= f.text_field :title, id: "question_title" %>
+    <br>
+    <%= f.label :body, "質問内容"  %>
+    <br>
+    <%= f.text_field :body, id: "question_body" %>
+    <br>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+  <% end %>
+</div>

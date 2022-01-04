@@ -1,0 +1,15 @@
+<div class="user-container">
+  <% @users.each do |user| %>
+  <div class="image">
+  <%= image_tag user.image, class: "rounded-circle", size: "120x120" if user.image.attached? %>
+  </div>
+  <div class="nickname">
+  <%= link_to user.nickname, [:admin, user] %>
+  </div>
+    
+  <div class="right-container">
+    <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-primary mr-3" %>
+    <%= link_to "削除", [:admin, user], method: :delete, class: "btn btn-primary mr-3" %>
+  </div>
+  <% end %>
+</div>

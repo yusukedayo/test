@@ -5,11 +5,6 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
-  def question
-    @q = current_user.questions.ransack(params[:q])
-    @questions = @q.result(distinct: true).page(params[:page]).per(5)
-  end
-
   def show
     @user = User.find(params[:id])
   end

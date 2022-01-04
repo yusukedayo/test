@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :login_required
+
   def new
   end
 
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      render :new
+      render :newf
     end
   end
 
@@ -20,9 +21,8 @@ class SessionsController < ApplicationController
   end
 
   private
+
   def session_params
     params.require(:session).permit(:email, :password)
   end
 end
-
-

@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
   root to: "questions#index"
 
-  namespace :questions do
-    get 'solved/index'
-  end
-
   namespace :admin do
-    get "/users/question", to:"users#question"
     resources :users
+    resources :questions, only: [:index, :destroy]
   end
 
   resources :questions do

@@ -2,7 +2,7 @@
   <p class="title">投稿フォーム</p>
   <%= form_with model: question do |f| %>
     <%= f.label :solved, "解決済みにする"  %>
-    <%= f.check_box :solved, id:"question_solved" %>
+    <%= f.check_box :solved, id:"solved_questions" %>
     <br>
     <br>
     <%= f.label :title, "質問タイトル"  %>

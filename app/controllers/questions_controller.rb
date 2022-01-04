@@ -14,10 +14,10 @@ class QuestionsController < ApplicationController
     @questions = @q.result(distinct: true).page(params[:page]).per(5)
   end
 
-
   def show
     @question = Question.find(params[:id])
-    @answer = @question.answers.build
+    @answers = @question.answers
+    @answer = Answer.new
   end
 
   def new
@@ -27,10 +27,10 @@ class QuestionsController < ApplicationController
   def edit
     @question = current_user.questions.find(params[:id])
   end
-  
+
   def update
-    question = current_user.questions.find(params[:id])
-    if question.update(question_params)
+    @question = current_user.questions.find(params[:id])
+    if @question.update(question_params)
       redirect_to questions_url
     else
       render :edit
@@ -38,10 +38,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    question = current_user.questions.find(params[:id])
-    question.destroy
+    @question = current_user.questions.find(params[:id])
+    @question.destroy
     redirect_to questions_path
   end
+
   
   def create
     @question = Question.new(question_params)
@@ -50,12 +51,13 @@ class QuestionsController < ApplicationController
       QuestionMailer.creation_email(@question).deliver_now
       redirect_to questions_url
     else
-      flash.now[:danger] = '失敗しました'
+      flash.now[:danger] = "失敗しました"
       render :new
     end
   end
 
   private
+
   def question_params
     params.require(:question).permit(:title, :body, :solved, :image)
   end
